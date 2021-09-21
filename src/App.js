@@ -18,6 +18,7 @@ function App() {
         <h3>
           <span className="material-icons">catching_pokemon</span>
         </h3>
+        <hr />
         <Switch>
           <Route path="/" exact component={ Login } />
           <Route path="/login" exact component={ Login } />

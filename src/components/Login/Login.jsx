@@ -1,9 +1,13 @@
 const Login = () => {
     return(
-        <div className="Login">
+        <form className="mt-3 Login">
             <h2>Login to the Translator</h2>
-            <input type="text" placeholder="Type your name here"></input>
-        </div>
+            <div className="mb-3">
+                <label htmlFor="username" className="form-label">Username</label>
+                <input id="username" type="text" placeholder="Enter your username" className="form-control"/>
+            </div>
+            <button type="submit" className="btn btn-primary btn-lg">Login</button>
+        </form>
     )
 }
 
