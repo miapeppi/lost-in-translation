@@ -5,17 +5,18 @@ import { useState } from 'react'
 const Translation = () => {
     const [ input, setInput] = useState('')
 
-    const translateInput = (data) => {
-        console.log('YY', data)
-        setInput(data)
+    const translateInput = (input) => {
+        console.log('YY', input)
+        setInput(input)
         console.log('XX ',input)
     }
     return(
         <div>
             <h2>Translation page</h2>
             <p>{input}</p>
-            <Input translateInput = { translateInput }/>
-            <Signs userInput={ input }/>
+            <Input value={input} translateInput = { translateInput }/>
+            <Signs userInput='moikka' />
+            {console.log('ZZ', input)}
         </div>
     )
 }

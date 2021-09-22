@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const Input = ({ translateInput }) => {
+const Input = ({ value, translateInput }) => {
 
     const [ input, setInput] = useState('')
 
