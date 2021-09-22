@@ -1,13 +1,21 @@
+import Input from './Input'
+import Signs from './Signs'
+import { useState } from 'react'
+
 const Translation = () => {
+    const [ input, setInput] = useState('')
+
+    const translateInput = (data) => {
+        console.log('YY', data)
+        setInput(data)
+        console.log('XX ',input)
+    }
     return(
         <div>
             <h2>Translation page</h2>
-            <p>Hello is: </p>
-            <img src="/images/individual_signs/h.png" alt="h-sign"/>
-            <img src="/images/individual_signs/e.png" alt="e-sign"/>
-            <img src="/images/individual_signs/l.png" alt="l-sign"/>
-            <img src="/images/individual_signs/l.png" alt="l-sign"/>
-            <img src="/images/individual_signs/o.png" alt="o-sign"/>
+            <p>{input}</p>
+            <Input translateInput = { translateInput }/>
+            <Signs userInput={ input }/>
         </div>
     )
 }
