@@ -1,14 +1,29 @@
-const Login = () => {
-    return(
-        <form className="mt-3 Login">
-            <h2>Login to the Translator</h2>
-            <div className="mb-3">
-                <label htmlFor="username" className="form-label">Username</label>
-                <input id="username" type="text" placeholder="Enter your username" className="form-control"/>
-            </div>
-            <button type="submit" className="btn btn-primary btn-lg">Login</button>
-        </form>
-    )
-}
+import { Container, Row, Col } from "react-bootstrap";
 
-export default Login
+const Login = () => {
+  return (
+    <Container>
+      <Row className="Login">
+        <Col className="align-self-center">
+          <img src="/images/Logo-Hello.png" alt="robot saying hello" />
+        </Col>
+        <Col className="align-self-center text-center">
+          <h1 className="mb-5">WELCOME TO GET LOST IN TRANSLATION!</h1>
+          <form className="mt-3 input-group">
+            <input
+              id="username"
+              type="text"
+              placeholder="What's your name?"
+              className="form-control"
+            />
+            <button type="submit" className="btn btn-lg">
+              LOGIN
+            </button>
+          </form>
+        </Col>
+      </Row>
+    </Container>
+  );
+};
+
+export default Login;
