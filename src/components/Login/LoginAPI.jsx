@@ -1,5 +1,19 @@
 export const LoginAPI = {
-    login(username) {
+    login(givenUsername){
+        return fetch(`https://frontend-api-experis-academy.herokuapp.com/translations?username=${givenUsername}`)
+            .then(async (response) => {
+                if (!response.ok) {
+                    const { error = 'An unknown error occured' } = await response.json()
+                    throw new Error(error)
+                }
+                const profile = await response.json()
+                if(profile.length === 0){
+                    return this.createNewUser(givenUsername)
+                }
+                return response.json()
+            })
+    },
+    createNewUser(username) {
         return fetch('https://frontend-api-experis-academy.herokuapp.com/translations', {
             method: 'POST',
             headers: {
