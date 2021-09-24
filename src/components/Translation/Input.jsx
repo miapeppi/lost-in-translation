@@ -1,23 +1,28 @@
-import { useState } from 'react'
+import { useState } from "react";
 
 const Input = ({ translateInput }) => {
+  const [input, setInput] = useState("");
 
-    const [ input, setInput] = useState('')
+  const updateChange = (event) => {
+    setInput(event.target.value);
+    event.preventDefault();
+  };
+  return (
+    <form
+      onSubmit={(event) => translateInput(event, input)}
+      className="mb-4 input-group"
+    >
+      <input
+        type="text"
+        onChange={updateChange}
+        className="form-control"
+        placeholder="What would you like to translate?"
+      />
+      <button type="text" className="btn btn-lg">
+        TRANSLATE
+      </button>
+    </form>
+  );
+};
 
-    const updateChange = (event) => {
-        setInput(event.target.value)
-        event.preventDefault()
-    } 
-    return(
-            <form onSubmit={ (event) => translateInput(event, input)}>
-                <input type="text" onChange={ updateChange }></input>
-                <button 
-                    type="text" 
-                    className="btn btn-primary" >
-                    Translate
-                </button>
-            </form>
-    )
-}
-
-export default Input
+export default Input;

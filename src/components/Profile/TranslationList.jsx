@@ -1,9 +1,13 @@
-const TranslationList = () => {
-    return(
-        <div>
+import TranslationListItem from "./TranslationListItem";
 
-        </div>
-    )
-}
+const TranslationList = ({ translations }) => {
+  return (
+    <div>
+      {translations.map((translation) => {
+        return <TranslationListItem translation={translation} />;
+      })}
+    </div>
+  );
+};
 
-export default TranslationList
+export default TranslationList;

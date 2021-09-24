@@ -1,9 +1,9 @@
 const Logout = () => {
-    return(
-        <div>
+  return (
+    <div>
+      <button className="btn btn-lg">LOGOUT</button>
+    </div>
+  );
+};
 
-        </div>
-    )
-}
-
-export default Logout
+export default Logout;
