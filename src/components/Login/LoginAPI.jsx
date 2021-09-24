@@ -10,7 +10,7 @@ export const LoginAPI = {
                 if(profile.length === 0){
                     return this.createNewUser(givenUsername)
                 }
-                return response.json()
+                return profile
             })
     },
     createNewUser(username) {

@@ -3,8 +3,8 @@ import TranslationListItem from "./TranslationListItem";
 const TranslationList = ({ translations }) => {
   return (
     <div>
-      {translations.map((translation) => {
-        return <TranslationListItem translation={translation} />;
+      {translations.map((translation, index) => {
+        return <TranslationListItem key={index} translation={translation} />;
       })}
     </div>
   );
