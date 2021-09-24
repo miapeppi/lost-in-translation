@@ -1,20 +1,48 @@
+import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { loginAttemptAction } from "../../store/actions/loginActions"
+import AppContainer from "../../hoc/AppContainer.jsx"
+import { Redirect } from "react-router-dom"
 import { Container, Row, Col } from "react-bootstrap";
 
+
 const Login = () => {
-  return (
-    <Container>
+
+    const dispatch = useDispatch()
+
+    const { loggedIn } = useSelector(state => state.sessionReducer)
+    
+    const [username, setUsername] = useState('')
+
+    const onInputChange = event => {
+        setUsername(event.target.value)
+    }
+
+    const onFormChange = event => {
+        event.preventDefault()
+        dispatch(loginAttemptAction(username))
+    }
+
+    return(
+        
+        <>
+            { loggedIn && <Redirect to="/translation" />}
+            { !loggedIn &&
+      
+          <Container>
       <Row className="Login">
         <Col className="align-self-center">
           <img src="/images/Logo-Hello.png" alt="robot saying hello" />
         </Col>
         <Col className="align-self-center text-center">
           <h1 className="mb-5">WELCOME TO GET LOST IN TRANSLATION!</h1>
-          <form className="mt-3 input-group">
+          <form className="mt-3 input-group" onSubmit={ onFormChange }>
             <input
               id="username"
               type="text"
               placeholder="What's your name?"
               className="form-control"
+              onChange={ onInputChange }
             />
             <button type="submit" className="btn btn-lg">
               LOGIN
@@ -23,7 +51,9 @@ const Login = () => {
         </Col>
       </Row>
     </Container>
-  );
-};
+            }
+        </>    
+    )
+}
 
 export default Login;
