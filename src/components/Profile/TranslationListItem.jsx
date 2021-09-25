@@ -1,6 +1,6 @@
 import { Card } from "react-bootstrap";
 
-const TranslationListItem = ({ translation }) => {
+const TranslationListItem = ({ idx, translation, onClickHandle }) => {
   const PrintSigns = ({ word }) => {
     // Voi ehkä ottaa pois jos sanat tallennetaan oikean muotoisin
     const splitWord = word
@@ -22,13 +22,15 @@ const TranslationListItem = ({ translation }) => {
   return (
     <Card className="profileCard mb-5">
       <Card.Header className="cardHeader">
-        Translation for: {translation}
+        Translation for: {translation} Index: {idx}
       </Card.Header>
       <Card.Body>
         <Card.Text>
           <PrintSigns word={translation} />
         </Card.Text>
-        <button className="btn btn-sm">DELETE TRANSLATION</button>
+        <button className="btn btn-sm" onClick={(event) => onClickHandle(event, idx)} >
+          DELETE TRANSLATION
+          </button>
       </Card.Body>
     </Card>
   );

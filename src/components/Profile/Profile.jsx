@@ -9,7 +9,6 @@ import { ProfileAPI } from "./ProfileAPI";
 const Profile = () => {
   const [translations, setTranslations] = useState({
     translations: [],
-
     fetching: true,
   });
   const { username } = useSelector((state) => state.sessionReducer);
@@ -17,25 +16,25 @@ const Profile = () => {
   console.log(username);
   useEffect(() => {
     ProfileAPI.getTranslations(username).then((translationsList) => {
-      setTranslations({
+      if(translationsList.length){
+        setTranslations({
         translations: translationsList[0].translations,
         fetching: false,
-      });
+      })}
     });
   }, []);
 
-  // const translations = [
-  //   "hello",
-  //   "coffee",
-  //   "react",
-  //   "tgif",
-  //   "glitter",
-  //   "code",
-  //   "keyboard",
-  //   "tea",
-  //   "music",
-  //   "cactus",
-  // ];
+  const onClickHandle = (event, index) => {
+    event.preventDefault()
+    console.log("1:", translations.translations, index);
+    const copyOfTranslations = [...translations.translations]
+    copyOfTranslations.splice(copyOfTranslations.length - (copyOfTranslations.slice(-10).length-index), 1)
+    console.log("2:", copyOfTranslations);
+    setTranslations({
+      ...translations,
+      translations: copyOfTranslations
+    })
+  }
 
   return (
     <>
@@ -49,7 +48,7 @@ const Profile = () => {
             <Logout />
           </Col>
         </Row>
-        <TranslationList translations={translations.translations.slice(-10)} />
+        <TranslationList translations={translations.translations.slice(-10)} onClickHandle={onClickHandle} />
       </Container>
     </>
   );
