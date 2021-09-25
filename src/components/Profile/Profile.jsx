@@ -9,6 +9,7 @@ import { ProfileAPI } from "./ProfileAPI";
 const Profile = () => {
   const [translations, setTranslations] = useState({
     translations: [],
+
     fetching: true,
   });
   const { username } = useSelector((state) => state.sessionReducer);
