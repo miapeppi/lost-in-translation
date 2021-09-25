@@ -16,6 +16,7 @@ const Input = ({ translateInput }) => {
         type="text"
         onChange={updateChange}
         className="form-control"
+        maxLength="40"
         placeholder="What would you like to translate?"
       />
       <button type="text" className="btn btn-lg">
