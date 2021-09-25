@@ -1,7 +1,12 @@
 const Logout = () => {
+  const handleLogout = () => {
+    console.log("Logout");
+  };
   return (
     <div>
-      <button className="btn btn-lg">LOGOUT</button>
+      <button className="btn btn-lg" onClick={handleLogout}>
+        LOGOUT
+      </button>
     </div>
   );
 };
