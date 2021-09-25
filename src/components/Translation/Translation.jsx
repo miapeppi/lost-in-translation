@@ -12,23 +12,28 @@ const Translation = () => {
   const [state, setState] = useState([])
 
   useEffect(() => {
-    ProfileAPI.getTranslations(usernameTest)
+    ProfileAPI.getTranslations(username)
       .then(profile => {
         setState(profile[0])
       })
   })
 
-  const { username = '', id } = useSelector(state => state.sessionReducer)
+  const { username , id } = useSelector(state => state.sessionReducer)
 
-  const idTest = 2
-  const usernameTest = 'serge'
 
   const translateInput = (event, input) => {
     event.preventDefault();
     setInput(input);
+    console.log(state)
+    // if(state){
+    //   const copyWithInput = [...state.translations, input]
+    //   InputAPI.updateTranslations(id, copyWithInput)
+    // } else {
+    //   InputAPI.updateTranslations(id, input)
+    // }
+
     const copyWithInput = [...state.translations, input]
-    InputAPI.updateTranslations(idTest, copyWithInput)
-    console.log(username, id);
+    InputAPI.updateTranslations(id, copyWithInput)
   }
 
 
