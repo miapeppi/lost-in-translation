@@ -1,9 +1,8 @@
-import { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { loginAttemptAction } from "../../store/actions/loginActions"
-import { Redirect } from "react-router-dom"
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loginAttemptAction } from "../../store/actions/loginActions";
+import { Redirect } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
-
 
 const Login = () => {
 
@@ -17,7 +16,7 @@ const Login = () => {
         setUsername(event.target.value)
     }
 
-    const onFormChange = event => {
+    const onLoginSubmit = event => {
         event.preventDefault()
         dispatch(loginAttemptAction(username))
     }
@@ -25,7 +24,7 @@ const Login = () => {
     return(
         
         <>
-            { loggedIn && <Redirect to="/translation" />}
+            { loggedIn && <Redirect to="/profile" />}
             { !loggedIn &&
       
               <Container>
@@ -35,7 +34,7 @@ const Login = () => {
                   </Col>
                   <Col className="align-self-center text-center">
                     <h1 className="mb-5">WELCOME TO GET LOST IN TRANSLATION!</h1>
-                    <form className="mt-3 input-group" onSubmit={ onFormChange }>
+                    <form className="mt-3 input-group" onSubmit={ onLoginSubmit }>
                       <input
                         id="username"
                         type="text"
