@@ -5,13 +5,14 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { ProfileAPI } from "./ProfileAPI";
+import { Redirect } from "react-router-dom";
 
 const Profile = () => {
   const [translations, setTranslations] = useState({
     translations: [],
     fetching: true,
   });
-  const { username } = useSelector((state) => state.sessionReducer);
+  const { username, loggedIn } = useSelector((state) => state.sessionReducer);
 
   console.log(username);
   useEffect(() => {
@@ -38,18 +39,24 @@ const Profile = () => {
 
   return (
     <>
-      <Header />
-      <Container>
-        <Row className="mb-5">
-          <Col>
-            <h2>WELCOME TO YOUR PROFILE!</h2>
-          </Col>
-          <Col>
-            <Logout />
-          </Col>
-        </Row>
-        <TranslationList translations={translations.translations.slice(-10)} onClickHandle={onClickHandle} />
-      </Container>
+          { !loggedIn && <Redirect to="/" />}
+
+          {
+            <>
+              <Header />
+              <Container>
+                <Row className="mb-5">
+                  <Col>
+                    <h2>WELCOME TO YOUR PROFILE!</h2>
+                  </Col>
+                  <Col>
+                    <Logout />
+                  </Col>
+                </Row>
+                <TranslationList translations={translations.translations.slice(-10)} onClickHandle={onClickHandle} />
+              </Container>
+            </>
+          }
     </>
   );
 };

@@ -1,5 +1,6 @@
 import {
   ACTION_SESSION_INIT,
+  ACTION_SESSION_LOGOUT,
   ACTION_SESSION_SET,
   sessionSetAction,
 } from "../actions/sessionActions";
@@ -23,4 +24,9 @@ export const sessionMiddleware =
     if (action.type === ACTION_SESSION_SET) {
       localStorage.setItem("rlit-ss", JSON.stringify(action.payload));
     }
+
+    if(action.type === ACTION_SESSION_LOGOUT){
+      localStorage.removeItem("rlit-ss")
+    }
+
   };
