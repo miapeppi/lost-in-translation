@@ -12,10 +12,11 @@ const Profile = () => {
     translations: [],
     fetching: true
   })
-  const { username } = useSelector(state => state.sessionReducer)
+  const { username = '' } = useSelector(state => state.sessionReducer)
 
   console.log(username);
-  useEffect(() => {
+
+  useEffect((username) => {
     ProfileAPI.getTranslations(username)
       .then(translationsList => {
         
