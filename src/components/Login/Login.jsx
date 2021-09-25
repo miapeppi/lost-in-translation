@@ -25,7 +25,7 @@ const Login = () => {
     return(
         
         <>
-            { loggedIn && <Redirect to="/profile" />}
+            { loggedIn && <Redirect to="/translation" />}
             { !loggedIn &&
       
               <Container>

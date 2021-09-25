@@ -11,8 +11,7 @@ export const sessionMiddleware = ({ dispatch }) => next => action => {
             return 
         }
         const session = JSON.parse(storedSession)
-        console.log("session:", session)
-        console.log("session[0]:", session[0])
+ 
         dispatch(sessionSetAction(session[0]))
     }
 

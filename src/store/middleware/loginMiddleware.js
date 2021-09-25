@@ -10,6 +10,7 @@ export const loginMiddleware = ({ dispatch }) => next => action => {
         LoginAPI.login(action.payload)
         .then(profile => {
             dispatch(loginSuccessAction(profile))
+
         })
         .catch(error => {
             dispatch(loginErrorAction(error.message))
@@ -18,5 +19,6 @@ export const loginMiddleware = ({ dispatch }) => next => action => {
 
     if (action.type === ACTION_LOGIN_SUCCESS) {
         dispatch(sessionSetAction(action.payload))
+
     }
 }
