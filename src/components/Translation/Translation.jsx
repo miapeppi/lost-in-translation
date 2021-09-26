@@ -6,6 +6,9 @@ import { useSelector } from "react-redux"
 import { Container } from "react-bootstrap";
 import { InputAPI } from "./InputAPI";
 import { ProfileAPI } from "../Profile/ProfileAPI";
+import { Redirect } from "react-router-dom"
+import { useDispatch } from "react-redux";
+import { sessionLogoutAction } from "../../store/actions/sessionActions";
 
 const Translation = () => {
   const [input, setInput] = useState("");
@@ -18,32 +21,34 @@ const Translation = () => {
       })
   })
 
-  const { username , id } = useSelector(state => state.sessionReducer)
+  const dispatch = useDispatch()
 
+  const { username , id, loggedIn } = useSelector(state => state.sessionReducer)
 
   const translateInput = (event, input) => {
     event.preventDefault();
     setInput(input);
-    console.log(state)
-    // if(state){
-    //   const copyWithInput = [...state.translations, input]
-    //   InputAPI.updateTranslations(id, copyWithInput)
-    // } else {
-    //   InputAPI.updateTranslations(id, input)
-    // }
-
     const copyWithInput = [...state.translations, input]
-    InputAPI.updateTranslations(id, copyWithInput)
+    let tst = InputAPI.updateTranslations(id, copyWithInput)
+    tst.then(msg => {
+      if(msg === 'logout')
+        dispatch(sessionLogoutAction())
+    })
   }
 
 
   return (
     <>
-      <Header />
-      <Container>
-        <Input value={input} translateInput={translateInput} />
-        {input && <Signs userInput={input} />}
-      </Container>
+        { !loggedIn && <Redirect to="/" /> }
+        { loggedIn &&
+          <>
+              <Header />
+            <Container>
+              <Input value={input} translateInput={translateInput} />
+              {input && <Signs userInput={input} />}
+            </Container>
+          </>
+        }
     </>
   )
 };

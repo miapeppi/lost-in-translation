@@ -1,5 +1,5 @@
 export const InputAPI = {
-    updateTranslations(id, posts) {
+    updateTranslations(id, posts) {      
         return fetch(`https://frontend-api-experis-academy.herokuapp.com/translations/${id}`, {
             method: 'PATCH',
             headers: {
@@ -11,8 +11,13 @@ export const InputAPI = {
             })
         })
         .then(async response => {
+            
+            if(response.status === 404){
+                return 'logout'
+            }
             if(!response.ok) {
-                const { error = 'Error occurred while fetching translations'} = await response.json()
+                console.log(response.status);
+                const { error = 'Error occurred while updating translations'} = await response.json()
                 throw Error(error)
             }
 
