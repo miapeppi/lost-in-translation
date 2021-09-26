@@ -1,22 +1,19 @@
 import { useDispatch } from "react-redux";
 import { sessionLogoutAction } from "../../store/actions/sessionActions";
 
-
-
 const Logout = () => {
+  // Get an instance of he dispatcher
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
-
+  // Dispatch the sessionLogoutAction
   const handleLogout = () => {
-    dispatch(sessionLogoutAction())
+    dispatch(sessionLogoutAction());
   };
 
   return (
-    <div>
-      <button className="btn btn-lg" onClick={handleLogout}>
-        LOGOUT
-      </button>
-    </div>
+    <button className="btn btn-lg" onClick={handleLogout}>
+      LOGOUT
+    </button>
   );
 };
 

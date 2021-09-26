@@ -3,10 +3,13 @@ import { useState } from "react";
 const Input = ({ translateInput }) => {
   const [input, setInput] = useState("");
 
+  // Updating the input value when the input changes
   const updateChange = (event) => {
     setInput(event.target.value);
     event.preventDefault();
   };
+
+  // Sending the event to the Translation component, when the form is submitted 
   return (
     <form
       onSubmit={(event) => translateInput(event, input)}

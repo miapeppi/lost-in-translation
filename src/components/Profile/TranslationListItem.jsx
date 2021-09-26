@@ -1,15 +1,16 @@
 import { Card } from "react-bootstrap";
 
 const TranslationListItem = ({ idx, translation, onClickHandle }) => {
+  // Formatting the translation, so it doesn't have characters that can't be translated
   const PrintSigns = ({ word }) => {
-    // Voi ehkä ottaa pois jos sanat tallennetaan oikean muotoisin
     const splitWord = word
       .toLowerCase()
-      .replace(/[^\w\s]/gi, "")
-      .replace(/\s/g, "")
-      .replace(/[0-9]/g, "")
+      .replace(/[^\w\s]/gi, "") // Removes punctuation from the string
+      .replace(/\s/g, "") // Removes whitespace from the string
+      .replace(/[0-9]/g, "") // Removes numbers from the string
       .split("");
 
+    // Mapping the formatted chars, and searching the correct images for every character
     return splitWord.map((a, index) => (
       <img
         key={index}
@@ -28,9 +29,12 @@ const TranslationListItem = ({ idx, translation, onClickHandle }) => {
         <Card.Text>
           <PrintSigns word={translation} />
         </Card.Text>
-        <button className="btn btn-sm" onClick={(event) => onClickHandle(event, idx)} >
+        <button
+          className="btn btn-sm"
+          onClick={(event) => onClickHandle(event, idx)}
+        >
           DELETE TRANSLATION
-          </button>
+        </button>
       </Card.Body>
     </Card>
   );

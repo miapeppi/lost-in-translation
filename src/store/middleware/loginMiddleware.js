@@ -7,24 +7,20 @@ import {
 } from "../actions/loginActions";
 import { sessionSetAction } from "../actions/sessionActions";
 
-export const loginMiddleware =
-  ({ dispatch }) =>
-  (next) =>
-  (action) => {
-    next(action);
+export const loginMiddleware =({ dispatch }) => (next) => (action) => {
+  next(action);
 
-    if (action.type === ACTION_LOGIN_ATTEMPTING) {
+  if (action.type === ACTION_LOGIN_ATTEMPTING) {
+    LoginAPI.login(action.payload)
+    .then((profile) => {
+      dispatch(loginSuccessAction(profile));
+    })
+    .catch((error) => {
+      dispatch(loginErrorAction(error.message));
+    });
+  }
 
-      LoginAPI.login(action.payload)
-        .then((profile) => {
-          dispatch(loginSuccessAction(profile));
-        })
-        .catch((error) => {
-          dispatch(loginErrorAction(error.message));
-        });
-    }
-
-    if (action.type === ACTION_LOGIN_SUCCESS) {
-      dispatch(sessionSetAction(action.payload[0]));
-    }
-  };
+  if (action.type === ACTION_LOGIN_SUCCESS) {
+    dispatch(sessionSetAction(action.payload[0]));
+  }
+};

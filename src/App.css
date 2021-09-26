@@ -16,12 +16,12 @@ h2 {
   background-color: #a8d7e9;
 }
 
-/* LOGIN PAGE */
+/** LOGIN PAGE */
 .Login {
   height: 100vh;
 }
 
-/* TRANSLATION PAGE */
+/** TRANSLATION PAGE */
 .signsCard {
   border: 0;
   color: #002b43;
@@ -30,7 +30,7 @@ h2 {
   background-color: #a8d7e9;
 }
 
-/* HEADER */
+/** HEADER */
 .navbar {
   background-color: #a8d7e9;
   font-family: "Fredoka One", cursive;
@@ -40,7 +40,7 @@ h2 {
   color: #002b43;
 }
 
-/* PROFILE PAGE */
+/** PROFILE PAGE */
 .cardHeader {
   background-color: #a8d7e9;
   color: #002b43;

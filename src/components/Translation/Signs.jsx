@@ -1,6 +1,7 @@
 import { Card } from "react-bootstrap";
 
 const Signs = ({ userInput }) => {
+  // Formatting the translation, so it doesn't have characters that can't be translated
   const PrintSigns = ({ word }) => {
     const splitWord = word
       .toLowerCase()
@@ -9,6 +10,7 @@ const Signs = ({ userInput }) => {
       .replace(/[0-9]/g, "") // Removes numbers from the string
       .split("");
 
+    // Mapping the formatted chars, and searching the correct images for every character
     return splitWord.map((a, index) => (
       <img
         key={index}
