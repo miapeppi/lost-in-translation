@@ -14,7 +14,6 @@ const Profile = () => {
   });
   const { username, loggedIn } = useSelector((state) => state.sessionReducer);
 
-  console.log(username);
   useEffect(() => {
     ProfileAPI.getTranslations(username).then((translationsList) => {
       if(translationsList.length){
@@ -27,10 +26,8 @@ const Profile = () => {
 
   const onClickHandle = (event, index) => {
     event.preventDefault()
-    console.log("1:", translations.translations, index);
     const copyOfTranslations = [...translations.translations]
     copyOfTranslations.splice(copyOfTranslations.length - (copyOfTranslations.slice(-10).length-index), 1)
-    console.log("2:", copyOfTranslations);
     setTranslations({
       ...translations,
       translations: copyOfTranslations
@@ -41,7 +38,7 @@ const Profile = () => {
     <>
           { !loggedIn && <Redirect to="/" />}
 
-          {
+          { loggedIn &&
             <>
               <Header />
               <Container>
@@ -53,6 +50,9 @@ const Profile = () => {
                     <Logout />
                   </Col>
                 </Row>
+                { translations.fetching &&
+                    <h2>Loading...</h2>
+                }                
                 <TranslationList translations={translations.translations.slice(-10)} onClickHandle={onClickHandle} />
               </Container>
             </>
