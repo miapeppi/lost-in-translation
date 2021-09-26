@@ -9,7 +9,8 @@ export const LoginAPI = {
       }
       const profile = await response.json();
       if (profile.length === 0) {
-        return await this.createNewUser(givenUsername);
+        await this.createNewUser(givenUsername);
+        return this.login(givenUsername)
       }
       return profile;
     });
@@ -22,7 +23,7 @@ export const LoginAPI = {
         headers: {
           "X-API-Key":
             "E4j2vtTmDfPR8BqptYOS4h2loXZl87fqeafsQMu6Nhz9WUp4LWlisPwMYgnLVT7k",
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
           username: username,
@@ -34,9 +35,6 @@ export const LoginAPI = {
         const { error = "An unknown error occurred" } = await response.json();
         throw new Error(error);
       }
-      console.log(response.json());
-
-      return await response.json();
     });
   },
 };
