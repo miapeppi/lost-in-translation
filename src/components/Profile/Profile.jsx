@@ -61,7 +61,7 @@ const Profile = () => {
                 <Logout />
               </Col>
             </Row>
-            {translations.fetching && <h2>Loading...</h2>}
+            {translations.fetching && <h2>LOADING...</h2>}
             {/** Sending a props of sliced list of saved translations to the TranslationList and onDeleteClickHandle */}
             <TranslationList
               translations={translations.translations.slice(-10)}

@@ -14,6 +14,7 @@ const Signs = ({ userInput }) => {
     return splitWord.map((a, index) => (
       <img
         key={index}
+        height="100"
         src={`/images/individual_signs/${a}.png`}
         alt={`${a}-sign`}
       />
