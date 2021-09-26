@@ -9,6 +9,7 @@ const Login = () => {
     const dispatch = useDispatch()
 
     const { loggedIn } = useSelector(state => state.sessionReducer)
+    const { loginAttempting } = useSelector(state => state.loginReducer)
     
     const [username, setUsername] = useState('')
 
@@ -24,7 +25,7 @@ const Login = () => {
     return(
         
         <>
-            { loggedIn && <Redirect to="/profile" />}
+            { loggedIn && <Redirect to="/translation" />}
             { !loggedIn &&
       
               <Container>
@@ -33,6 +34,11 @@ const Login = () => {
                     <img src="/images/Logo-Hello.png" alt="robot saying hello" />
                   </Col>
                   <Col className="align-self-center text-center">
+                    { loginAttempting && 
+                      <div className="spinner-border" role="status">
+                        <span className="sr-only"></span>
+                      </div>
+                    }
                     <h1 className="mb-5">WELCOME TO GET LOST IN TRANSLATION!</h1>
                     <form className="mt-3 input-group" onSubmit={ onLoginSubmit }>
                       <input
