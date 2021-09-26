@@ -22,7 +22,7 @@ const TranslationListItem = ({ idx, translation, onClickHandle }) => {
   return (
     <Card className="profileCard mb-5">
       <Card.Header className="cardHeader">
-        Translation for: {translation} Index: {idx}
+        Translation for: {translation}
       </Card.Header>
       <Card.Body>
         <Card.Text>
