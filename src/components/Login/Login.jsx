@@ -32,7 +32,7 @@ const Login = () => {
       {!loggedIn && (
         <Container>
           <Row className="Login">
-            <Col className="align-self-center">
+            <Col className="align-self-center loginImage">
               <img src="/images/Logo-Hello.png" alt="robot saying hello" />
             </Col>
             <Col className="align-self-center text-center">

@@ -21,6 +21,12 @@ h2 {
   height: 100vh;
 }
 
+@media (max-width: 992px) {
+  .loginImage {
+    display: none;
+  }
+}
+
 /** TRANSLATION PAGE */
 .signsCard {
   border: 0;
