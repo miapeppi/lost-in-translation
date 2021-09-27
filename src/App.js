@@ -1,10 +1,5 @@
 import "./App.css";
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-  // Redirect
-} from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Login from "./components/Login/Login";
 import Profile from "./components/Profile/Profile";
 import Translation from "./components/Translation/Translation";

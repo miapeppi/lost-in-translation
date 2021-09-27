@@ -14,10 +14,11 @@ const Header = () => {
           />{" "}
           LOST IN TRANSLATION
         </Navbar.Brand>
+        {/** Adding routing for navbar icons */}
         <Navbar.Text>
           <Link to="/translation">
             <span className="material-icons outlined linkIcon">translate</span>
-          </Link>{" "}
+          </Link>
           <Link to="/profile">
             <span className="material-icons linkIcon">account_circle</span>
           </Link>
