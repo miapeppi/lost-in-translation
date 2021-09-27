@@ -2,7 +2,7 @@
 
 Lost in Translation is a React framework specific frontend project, that uses API for saving user information, React Router to navigate between pages and Redux for state management. Bootstrap is used for UI layout.
 
-Page is running on Heroku: xxx
+Page is running on Heroku: https://sleepy-gorge-86678.herokuapp.com/
 
 Assignment was made as a pair project of Sergei Kaukiainen and Peppi Mäkelä, and it was the sixth weekly assignment of Experis Academy.
 
