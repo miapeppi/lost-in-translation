@@ -1,6 +1,6 @@
 import { Card } from "react-bootstrap";
 
-const TranslationListItem = ({ idx, translation, onClickHandle }) => {
+const TranslationListItem = ({ idx, translation, onClickHandleDelete }) => {
   // Formatting the translation, so it doesn't have characters that can't be translated
   const PrintSigns = ({ word }) => {
     const splitWord = word
@@ -32,7 +32,7 @@ const TranslationListItem = ({ idx, translation, onClickHandle }) => {
         </Card.Text>
         <button
           className="btn btn-sm"
-          onClick={(event) => onClickHandle(event, idx)}
+          onClick={(event) => onClickHandleDelete(event, idx)}
         >
           DELETE TRANSLATION
         </button>

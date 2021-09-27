@@ -10,6 +10,7 @@ import { sessionSetAction } from "../actions/sessionActions";
 export const loginMiddleware =({ dispatch }) => (next) => (action) => {
   next(action);
 
+  // If attempting login, fetch user information from the API
   if (action.type === ACTION_LOGIN_ATTEMPTING) {
     LoginAPI.login(action.payload)
     .then((profile) => {
@@ -20,6 +21,7 @@ export const loginMiddleware =({ dispatch }) => (next) => (action) => {
     });
   }
 
+  // If login success, set the user information
   if (action.type === ACTION_LOGIN_SUCCESS) {
     dispatch(sessionSetAction(action.payload[0]));
   }

@@ -1,16 +1,16 @@
 import TranslationListItem from "./TranslationListItem";
 
-const TranslationList = ({ translations, onClickHandle }) => {
+const TranslationList = ({ translations, onClickHandleDelete }) => {
   return (
     <div>
-      {/** Sending the mapped translation and onClickHandle as a props to the TranslationListItem */}
+      {/** Sending the mapped translation and onClickHandleDelete as a props to the TranslationListItem */}
       {translations.map((translation, index) => {
         return (
           <TranslationListItem
             key={index}
             idx={index}
             translation={translation}
-            onClickHandle={onClickHandle}
+            onClickHandleDelete={onClickHandleDelete}
           />
         );
       })}

@@ -18,7 +18,7 @@ const Login = () => {
     setUsername(event.target.value);
   };
 
-  // On form submit either fetching a user information or creating a new user
+  // On form submit either fetching a existing user information or creating a new user
   const onLoginSubmit = (event) => {
     event.preventDefault();
     dispatch(loginAttemptAction(username));

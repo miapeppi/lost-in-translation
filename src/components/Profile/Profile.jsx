@@ -28,8 +28,8 @@ const Profile = () => {
     });
   }, []);
 
-  // Handling the click of "Delete translation" button, by hiding it at the profile page
-  const onDeleteClickHandle = (event, index) => {
+  // Handling the click of "Delete translation" button, by hiding the TranslationListItem at the profile page
+  const onClickHandleDelete = (event, index) => {
     event.preventDefault();
     const copyOfTranslations = [...translations.translations];
     copyOfTranslations.splice(
@@ -62,10 +62,10 @@ const Profile = () => {
               </Col>
             </Row>
             {translations.fetching && <h2>LOADING...</h2>}
-            {/** Sending a props of sliced list of saved translations to the TranslationList and onDeleteClickHandle */}
+            {/** Sending a props of sliced list of saved translations to the TranslationList and onClickHandleDelete */}
             <TranslationList
               translations={translations.translations.slice(-10)}
-              onClickHandle={onDeleteClickHandle}
+              onClickHandleDelete={onClickHandleDelete}
             />
           </Container>
         </>

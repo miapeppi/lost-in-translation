@@ -1,36 +1,39 @@
 import Input from "./Input";
 import Signs from "./Signs";
 import Header from "../Header/Header";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { Container } from "react-bootstrap";
 import { InputAPI } from "./InputAPI";
 import { ProfileAPI } from "../Profile/ProfileAPI";
+import { sessionLogoutAction } from "../../store/actions/sessionActions";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { sessionLogoutAction } from "../../store/actions/sessionActions";
+
 
 const Translation = () => {
   const [input, setInput] = useState("");
   const [state, setState] = useState([]);
+  // Get an instance of he dispatcher
+  const dispatch = useDispatch();
 
+  // Fetching user information, so translation list can be later updated
   useEffect(() => { ProfileAPI.getTranslations(username)
     .then((profile) => {
       setState(profile[0]);
     });
   });
 
-  // Get an instance of he dispatcher
-  const dispatch = useDispatch();
-
   // Get the state of the username, id and loggedIn
   const { username, id, loggedIn } = useSelector((state) => state.sessionReducer);
 
+  // When input form is submitted, updating the input value and adding it to the users translation list
   const translateInput = (event, input) => {
     event.preventDefault();
     setInput(input);
     const copyWithInput = [...state.translations, input];
     let tst = InputAPI.updateTranslations(id, copyWithInput);
+    // if the message is logout, dispatch the sessionLogoutAction
     tst.then((msg) => {
       if (msg === "logout") dispatch(sessionLogoutAction());
     });

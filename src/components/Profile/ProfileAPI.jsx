@@ -7,8 +7,7 @@ export const ProfileAPI = {
     .then(async (response) => {
       // Checking that the fetch status is ok
       if (!response.ok) {
-        const { error = "Error occurred while fetching translations" } =
-          await response.json();
+        const { error = "Error occurred while fetching translations" } = await response.json();
         throw Error(error);
       }
       return response.json();

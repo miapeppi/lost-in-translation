@@ -16,7 +16,7 @@ export const InputAPI = {
         }),
       })
       .then(async (response) => {
-        // Checking user was found
+      // Checking user was found
       if (response.status === 404) {
         return "logout";
       }
